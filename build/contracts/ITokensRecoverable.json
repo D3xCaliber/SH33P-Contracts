@@ -1,0 +1,291 @@
+{
+  "contractName": "ITokensRecoverable",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "name": "recoverTokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"recoverTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/G/projects/degen-protocol/SH33P-contracts/contracts/ITokensRecoverable.sol\":\"ITokensRecoverable\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/G/projects/degen-protocol/SH33P-contracts/contracts/IERC20.sol\":{\"keccak256\":\"0xf84e080b9c4f498fd59e202f0d772cc663945dade21b44aa12a89916ecc6579c\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://5f7be2a1fb132b70ea120323b26d609b6973e67ac1dc358ec79818089bbdf0a4\",\"dweb:/ipfs/QmTeKVaZWBziHYHN5KhuFdxkLw5MrkwpSSPHTV9eqVTMaq\"]},\"/G/projects/degen-protocol/SH33P-contracts/contracts/ITokensRecoverable.sol\":{\"keccak256\":\"0x888b62e09df5335691219c4bedba74ea0b957171de1000b37b0ea9e8fa3ec311\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://33b12c17b1d535fa346b3fb98fc25fee67c7ab814abd7013a8d7f1f800df3d41\",\"dweb:/ipfs/QmWtgu1TwkF4iZN2pyE9rV8DDaYdg7qp91gawX1L6yDXKu\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: U-U-U-UPPPPP!!!\r\npragma solidity ^0.7.4;\r\n\r\nimport \"./IERC20.sol\";\r\n\r\ninterface ITokensRecoverable {\r\n    function recoverTokens(IERC20 token) external;\r\n}",
+  "sourcePath": "G:/projects/degen-protocol/SH33P-contracts/contracts/ITokensRecoverable.sol",
+  "ast": {
+    "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/ITokensRecoverable.sol",
+    "exportedSymbols": {
+      "IERC20": [
+        1632
+      ],
+      "ITokensRecoverable": [
+        2575
+      ]
+    },
+    "id": 2576,
+    "license": "U-U-U-UPPPPP",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2568,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:23:19"
+      },
+      {
+        "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IERC20.sol",
+        "file": "./IERC20.sol",
+        "id": 2569,
+        "nodeType": "ImportDirective",
+        "scope": 2576,
+        "sourceUnit": 1633,
+        "src": "72:22:19",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 2575,
+        "linearizedBaseContracts": [
+          2575
+        ],
+        "name": "ITokensRecoverable",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "16114acd",
+            "id": 2574,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "recoverTokens",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2572,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2571,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2574,
+                  "src": "157:12:19",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$1632",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "id": 2570,
+                    "name": "IERC20",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1632,
+                    "src": "157:6:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$1632",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "156:14:19"
+            },
+            "returnParameters": {
+              "id": 2573,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "179:0:19"
+            },
+            "scope": 2575,
+            "src": "134:46:19",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2576,
+        "src": "98:85:19"
+      }
+    ],
+    "src": "45:138:19"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/ITokensRecoverable.sol",
+      "exportedSymbols": {
+        "IERC20": [
+          1632
+        ],
+        "ITokensRecoverable": [
+          2575
+        ]
+      },
+      "license": "U-U-U-UPPPPP"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.7",
+            ".4"
+          ]
+        },
+        "id": 2568,
+        "name": "PragmaDirective",
+        "src": "45:23:19"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 1633,
+          "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IERC20.sol",
+          "file": "./IERC20.sol",
+          "scope": 2576,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 2569,
+        "name": "ImportDirective",
+        "src": "72:22:19"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            2575
+          ],
+          "name": "ITokensRecoverable",
+          "scope": 2576
+        },
+        "children": [
+          {
+            "attributes": {
+              "functionSelector": "16114acd",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "recoverTokens",
+              "scope": 2575,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "token",
+                      "scope": 2574,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IERC20",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "IERC20",
+                          "referencedDeclaration": 1632,
+                          "type": "contract IERC20"
+                        },
+                        "id": 2570,
+                        "name": "UserDefinedTypeName",
+                        "src": "157:6:19"
+                      }
+                    ],
+                    "id": 2571,
+                    "name": "VariableDeclaration",
+                    "src": "157:12:19"
+                  }
+                ],
+                "id": 2572,
+                "name": "ParameterList",
+                "src": "156:14:19"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2573,
+                "name": "ParameterList",
+                "src": "179:0:19"
+              }
+            ],
+            "id": 2574,
+            "name": "FunctionDefinition",
+            "src": "134:46:19"
+          }
+        ],
+        "id": 2575,
+        "name": "ContractDefinition",
+        "src": "98:85:19"
+      }
+    ],
+    "id": 2576,
+    "name": "SourceUnit",
+    "src": "45:138:19"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.4+commit.3f05b770.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-01-17T07:36:09.526Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

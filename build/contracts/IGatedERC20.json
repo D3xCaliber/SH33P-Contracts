@@ -1,0 +1,845 @@
+{
+  "contractName": "IGatedERC20",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_sender",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "transferGate",
+      "outputs": [
+        {
+          "internalType": "contract ITransferGate",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ITransferGate",
+          "name": "_transferGate",
+          "type": "address"
+        }
+      ],
+      "name": "setTransferGate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ITransferGate\",\"name\":\"_transferGate\",\"type\":\"address\"}],\"name\":\"setTransferGate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"transferGate\",\"outputs\":[{\"internalType\":\"contract ITransferGate\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/G/projects/degen-protocol/SH33P-contracts/contracts/IGatedERC20.sol\":\"IGatedERC20\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/G/projects/degen-protocol/SH33P-contracts/contracts/IERC20.sol\":{\"keccak256\":\"0xf84e080b9c4f498fd59e202f0d772cc663945dade21b44aa12a89916ecc6579c\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://5f7be2a1fb132b70ea120323b26d609b6973e67ac1dc358ec79818089bbdf0a4\",\"dweb:/ipfs/QmTeKVaZWBziHYHN5KhuFdxkLw5MrkwpSSPHTV9eqVTMaq\"]},\"/G/projects/degen-protocol/SH33P-contracts/contracts/IGatedERC20.sol\":{\"keccak256\":\"0xa2a2d46b370e58b25271d887abd32e2953e919e8e63c42a439a2ed9de8bd9799\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://ff19a80cba9851173700c92f79984edc3c42d0a76da86a4488a588ed8db23f1f\",\"dweb:/ipfs/QmbhK53dCUa7VJWCtALY9suajJgyUvh6WUDPrxDjqA8stG\"]},\"/G/projects/degen-protocol/SH33P-contracts/contracts/ITransferGate.sol\":{\"keccak256\":\"0x64a4e8d2093573b0530a13b48d222d5ca7e6ecb3381fc7179a504d433a93eebf\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://2cb4302ab07c561e903758314ce7b2ea79587d9281bb7ee051517b66e84e2d3d\",\"dweb:/ipfs/QmWkEC3nmDXywuZ5xLryHo1YrFrnvodpbMviSDGDELNyj5\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: U-U-U-UPPPPP!!!\r\npragma solidity ^0.7.4;\r\n\r\nimport \"./IERC20.sol\";\r\nimport \"./ITransferGate.sol\";\r\n\r\ninterface IGatedERC20 is IERC20\r\n{\r\n    function transferGate() external view returns (ITransferGate);\r\n\r\n    function setTransferGate(ITransferGate _transferGate) external;\r\n    function burn( uint256 amount) external;\r\n}",
+  "sourcePath": "G:/projects/degen-protocol/SH33P-contracts/contracts/IGatedERC20.sol",
+  "ast": {
+    "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IGatedERC20.sol",
+    "exportedSymbols": {
+      "IERC20": [
+        1632
+      ],
+      "IGatedERC20": [
+        1705
+      ],
+      "ITransferGate": [
+        2596
+      ]
+    },
+    "id": 1706,
+    "license": "U-U-U-UPPPPP",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1685,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:23:9"
+      },
+      {
+        "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IERC20.sol",
+        "file": "./IERC20.sol",
+        "id": 1686,
+        "nodeType": "ImportDirective",
+        "scope": 1706,
+        "sourceUnit": 1633,
+        "src": "72:22:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/ITransferGate.sol",
+        "file": "./ITransferGate.sol",
+        "id": 1687,
+        "nodeType": "ImportDirective",
+        "scope": 1706,
+        "sourceUnit": 2597,
+        "src": "96:29:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 1688,
+              "name": "IERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1632,
+              "src": "154:6:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IERC20_$1632",
+                "typeString": "contract IERC20"
+              }
+            },
+            "id": 1689,
+            "nodeType": "InheritanceSpecifier",
+            "src": "154:6:9"
+          }
+        ],
+        "contractDependencies": [
+          1632
+        ],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 1705,
+        "linearizedBaseContracts": [
+          1705,
+          1632
+        ],
+        "name": "IGatedERC20",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "b4975343",
+            "id": 1694,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferGate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1690,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "190:2:9"
+            },
+            "returnParameters": {
+              "id": 1693,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1692,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1694,
+                  "src": "216:13:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ITransferGate_$2596",
+                    "typeString": "contract ITransferGate"
+                  },
+                  "typeName": {
+                    "id": 1691,
+                    "name": "ITransferGate",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 2596,
+                    "src": "216:13:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ITransferGate_$2596",
+                      "typeString": "contract ITransferGate"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "215:15:9"
+            },
+            "scope": 1705,
+            "src": "169:62:9",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "61d8c817",
+            "id": 1699,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setTransferGate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1697,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1696,
+                  "mutability": "mutable",
+                  "name": "_transferGate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1699,
+                  "src": "264:27:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ITransferGate_$2596",
+                    "typeString": "contract ITransferGate"
+                  },
+                  "typeName": {
+                    "id": 1695,
+                    "name": "ITransferGate",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 2596,
+                    "src": "264:13:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ITransferGate_$2596",
+                      "typeString": "contract ITransferGate"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "263:29:9"
+            },
+            "returnParameters": {
+              "id": 1698,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "301:0:9"
+            },
+            "scope": 1705,
+            "src": "239:63:9",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "42966c68",
+            "id": 1704,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "burn",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1702,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1701,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1704,
+                  "src": "323:14:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1700,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "323:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "321:17:9"
+            },
+            "returnParameters": {
+              "id": 1703,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "347:0:9"
+            },
+            "scope": 1705,
+            "src": "308:40:9",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1706,
+        "src": "129:222:9"
+      }
+    ],
+    "src": "45:306:9"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IGatedERC20.sol",
+      "exportedSymbols": {
+        "IERC20": [
+          1632
+        ],
+        "IGatedERC20": [
+          1705
+        ],
+        "ITransferGate": [
+          2596
+        ]
+      },
+      "license": "U-U-U-UPPPPP"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.7",
+            ".4"
+          ]
+        },
+        "id": 1685,
+        "name": "PragmaDirective",
+        "src": "45:23:9"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 1633,
+          "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IERC20.sol",
+          "file": "./IERC20.sol",
+          "scope": 1706,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 1686,
+        "name": "ImportDirective",
+        "src": "72:22:9"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 2597,
+          "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/ITransferGate.sol",
+          "file": "./ITransferGate.sol",
+          "scope": 1706,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 1687,
+        "name": "ImportDirective",
+        "src": "96:29:9"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "contractDependencies": [
+            1632
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            1705,
+            1632
+          ],
+          "name": "IGatedERC20",
+          "scope": 1706
+        },
+        "children": [
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "IERC20",
+                  "referencedDeclaration": 1632,
+                  "type": "contract IERC20"
+                },
+                "id": 1688,
+                "name": "UserDefinedTypeName",
+                "src": "154:6:9"
+              }
+            ],
+            "id": 1689,
+            "name": "InheritanceSpecifier",
+            "src": "154:6:9"
+          },
+          {
+            "attributes": {
+              "functionSelector": "b4975343",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "transferGate",
+              "scope": 1705,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1690,
+                "name": "ParameterList",
+                "src": "190:2:9"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 1694,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ITransferGate",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ITransferGate",
+                          "referencedDeclaration": 2596,
+                          "type": "contract ITransferGate"
+                        },
+                        "id": 1691,
+                        "name": "UserDefinedTypeName",
+                        "src": "216:13:9"
+                      }
+                    ],
+                    "id": 1692,
+                    "name": "VariableDeclaration",
+                    "src": "216:13:9"
+                  }
+                ],
+                "id": 1693,
+                "name": "ParameterList",
+                "src": "215:15:9"
+              }
+            ],
+            "id": 1694,
+            "name": "FunctionDefinition",
+            "src": "169:62:9"
+          },
+          {
+            "attributes": {
+              "functionSelector": "61d8c817",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setTransferGate",
+              "scope": 1705,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_transferGate",
+                      "scope": 1699,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ITransferGate",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ITransferGate",
+                          "referencedDeclaration": 2596,
+                          "type": "contract ITransferGate"
+                        },
+                        "id": 1695,
+                        "name": "UserDefinedTypeName",
+                        "src": "264:13:9"
+                      }
+                    ],
+                    "id": 1696,
+                    "name": "VariableDeclaration",
+                    "src": "264:27:9"
+                  }
+                ],
+                "id": 1697,
+                "name": "ParameterList",
+                "src": "263:29:9"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1698,
+                "name": "ParameterList",
+                "src": "301:0:9"
+              }
+            ],
+            "id": 1699,
+            "name": "FunctionDefinition",
+            "src": "239:63:9"
+          },
+          {
+            "attributes": {
+              "functionSelector": "42966c68",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "burn",
+              "scope": 1705,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "amount",
+                      "scope": 1704,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 1700,
+                        "name": "ElementaryTypeName",
+                        "src": "323:7:9"
+                      }
+                    ],
+                    "id": 1701,
+                    "name": "VariableDeclaration",
+                    "src": "323:14:9"
+                  }
+                ],
+                "id": 1702,
+                "name": "ParameterList",
+                "src": "321:17:9"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1703,
+                "name": "ParameterList",
+                "src": "347:0:9"
+              }
+            ],
+            "id": 1704,
+            "name": "FunctionDefinition",
+            "src": "308:40:9"
+          }
+        ],
+        "id": 1705,
+        "name": "ContractDefinition",
+        "src": "129:222:9"
+      }
+    ],
+    "id": 1706,
+    "name": "SourceUnit",
+    "src": "45:306:9"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.4+commit.3f05b770.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-01-17T07:36:09.490Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

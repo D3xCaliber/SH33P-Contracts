@@ -1,0 +1,1377 @@
+{
+  "contractName": "IERC31337",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Deposit",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Withdrawal",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "depositTokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_sender",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdrawTokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "wrappedToken",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "floorCalculator",
+      "outputs": [
+        {
+          "internalType": "contract IFloorCalculator",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_sweeper",
+          "type": "address"
+        }
+      ],
+      "name": "sweepers",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IFloorCalculator",
+          "name": "_floorCalculator",
+          "type": "address"
+        }
+      ],
+      "name": "setFloorCalculator",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_sweeper",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "_allow",
+          "type": "bool"
+        }
+      ],
+      "name": "setSweeper",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        }
+      ],
+      "name": "sweepFloor",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "amountSwept",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Withdrawal\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"depositTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"floorCalculator\",\"outputs\":[{\"internalType\":\"contract IFloorCalculator\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IFloorCalculator\",\"name\":\"_floorCalculator\",\"type\":\"address\"}],\"name\":\"setFloorCalculator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_sweeper\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_allow\",\"type\":\"bool\"}],\"name\":\"setSweeper\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"}],\"name\":\"sweepFloor\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountSwept\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_sweeper\",\"type\":\"address\"}],\"name\":\"sweepers\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"withdrawTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"wrappedToken\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/G/projects/degen-protocol/SH33P-contracts/contracts/IERC31337.sol\":\"IERC31337\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/G/projects/degen-protocol/SH33P-contracts/contracts/IERC20.sol\":{\"keccak256\":\"0xf84e080b9c4f498fd59e202f0d772cc663945dade21b44aa12a89916ecc6579c\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://5f7be2a1fb132b70ea120323b26d609b6973e67ac1dc358ec79818089bbdf0a4\",\"dweb:/ipfs/QmTeKVaZWBziHYHN5KhuFdxkLw5MrkwpSSPHTV9eqVTMaq\"]},\"/G/projects/degen-protocol/SH33P-contracts/contracts/IERC31337.sol\":{\"keccak256\":\"0x60c905aa91c7fe5f3a7286351bd17339ca782d99ab0c7ef86cea9d710c76d9a2\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://e206a6149299d0f316601136d8e6b905a19f6bebad9dcfb906c35d39f0682dee\",\"dweb:/ipfs/QmQ7cgEkquRXsLqRwxuQgWPt8FQfazjoX1Rrdks6y7oJw6\"]},\"/G/projects/degen-protocol/SH33P-contracts/contracts/IFloorCalculator.sol\":{\"keccak256\":\"0x693fb17d6e6ec56db4c43a8c5bec033be768ceb1da4fbc69e8b748b0503a452a\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://7068808abbcb179375d7361f201167f2f7b9102f27331e77de76f9f0ef26677b\",\"dweb:/ipfs/QmTACtd5kLHm6uEvmNoc7pCYTHVHUK7WKebpa8MzRAP9Qr\"]},\"/G/projects/degen-protocol/SH33P-contracts/contracts/IWrappedERC20.sol\":{\"keccak256\":\"0xee1da5275a755a84bcc3a97aaa46ace8a5d0a716dc57ffc3c86016f55cfc4232\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://02636b9c06da55fed4bbe029de26c00891bfcd1aa70545a97979706737612bd1\",\"dweb:/ipfs/QmbGFJ6H7N73camSs5YRTaoeV8Xvu1KBpKmTmbf99wNeSL\"]},\"/G/projects/degen-protocol/SH33P-contracts/contracts/IWrappedERC20Events.sol\":{\"keccak256\":\"0x807e55b72ac08c7e8dd08a0ed8bbe168833982cbbb1c2dda8dd57ce75c15fb46\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://6d0aaa775a098635bf8dae4a4ee692efe8dda948130becdfb571667365fb4c5e\",\"dweb:/ipfs/Qmd7GQuy8QdqwsmNYyD7Gsui8JbWyR9WCZpufseG3eURCZ\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: U-U-U-UPPPPP!!!\r\npragma solidity ^0.7.4;\r\n\r\nimport \"./IWrappedERC20.sol\";\r\nimport \"./IFloorCalculator.sol\";\r\n\r\ninterface IERC31337 is IWrappedERC20\r\n{\r\n    function floorCalculator() external view returns (IFloorCalculator);\r\n    function sweepers(address _sweeper) external view returns (bool);\r\n    \r\n    function setFloorCalculator(IFloorCalculator _floorCalculator) external;\r\n    function setSweeper(address _sweeper, bool _allow) external;\r\n    function sweepFloor(address _to) external returns (uint256 amountSwept);\r\n}",
+  "sourcePath": "G:/projects/degen-protocol/SH33P-contracts/contracts/IERC31337.sol",
+  "ast": {
+    "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IERC31337.sol",
+    "exportedSymbols": {
+      "IERC20": [
+        1632
+      ],
+      "IERC31337": [
+        1670
+      ],
+      "IFloorCalculator": [
+        1683
+      ],
+      "IWrappedERC20": [
+        2626
+      ],
+      "IWrappedERC20Events": [
+        2641
+      ]
+    },
+    "id": 1671,
+    "license": "U-U-U-UPPPPP",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1634,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:23:7"
+      },
+      {
+        "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IWrappedERC20.sol",
+        "file": "./IWrappedERC20.sol",
+        "id": 1635,
+        "nodeType": "ImportDirective",
+        "scope": 1671,
+        "sourceUnit": 2627,
+        "src": "72:29:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IFloorCalculator.sol",
+        "file": "./IFloorCalculator.sol",
+        "id": 1636,
+        "nodeType": "ImportDirective",
+        "scope": 1671,
+        "sourceUnit": 1684,
+        "src": "103:32:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 1637,
+              "name": "IWrappedERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2626,
+              "src": "162:13:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IWrappedERC20_$2626",
+                "typeString": "contract IWrappedERC20"
+              }
+            },
+            "id": 1638,
+            "nodeType": "InheritanceSpecifier",
+            "src": "162:13:7"
+          }
+        ],
+        "contractDependencies": [
+          1632,
+          2626,
+          2641
+        ],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 1670,
+        "linearizedBaseContracts": [
+          1670,
+          2626,
+          2641,
+          1632
+        ],
+        "name": "IERC31337",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "cd2bc595",
+            "id": 1643,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "floorCalculator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1639,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "208:2:7"
+            },
+            "returnParameters": {
+              "id": 1642,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1641,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1643,
+                  "src": "234:16:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IFloorCalculator_$1683",
+                    "typeString": "contract IFloorCalculator"
+                  },
+                  "typeName": {
+                    "id": 1640,
+                    "name": "IFloorCalculator",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1683,
+                    "src": "234:16:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IFloorCalculator_$1683",
+                      "typeString": "contract IFloorCalculator"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "233:18:7"
+            },
+            "scope": 1670,
+            "src": "184:68:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "93ee5b61",
+            "id": 1650,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "sweepers",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1646,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1645,
+                  "mutability": "mutable",
+                  "name": "_sweeper",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1650,
+                  "src": "276:16:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1644,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "276:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "275:18:7"
+            },
+            "returnParameters": {
+              "id": 1649,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1648,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1650,
+                  "src": "317:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1647,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "317:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "316:6:7"
+            },
+            "scope": 1670,
+            "src": "258:65:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "a5b98a5a",
+            "id": 1655,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setFloorCalculator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1653,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1652,
+                  "mutability": "mutable",
+                  "name": "_floorCalculator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1655,
+                  "src": "363:33:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IFloorCalculator_$1683",
+                    "typeString": "contract IFloorCalculator"
+                  },
+                  "typeName": {
+                    "id": 1651,
+                    "name": "IFloorCalculator",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1683,
+                    "src": "363:16:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IFloorCalculator_$1683",
+                      "typeString": "contract IFloorCalculator"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "362:35:7"
+            },
+            "returnParameters": {
+              "id": 1654,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "406:0:7"
+            },
+            "scope": 1670,
+            "src": "335:72:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "485e7ba5",
+            "id": 1662,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setSweeper",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1660,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1657,
+                  "mutability": "mutable",
+                  "name": "_sweeper",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1662,
+                  "src": "433:16:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1656,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "433:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1659,
+                  "mutability": "mutable",
+                  "name": "_allow",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1662,
+                  "src": "451:11:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1658,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "451:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "432:31:7"
+            },
+            "returnParameters": {
+              "id": 1661,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "472:0:7"
+            },
+            "scope": 1670,
+            "src": "413:60:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "b12a22a2",
+            "id": 1669,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "sweepFloor",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1665,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1664,
+                  "mutability": "mutable",
+                  "name": "_to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1669,
+                  "src": "499:11:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1663,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "499:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "498:13:7"
+            },
+            "returnParameters": {
+              "id": 1668,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1667,
+                  "mutability": "mutable",
+                  "name": "amountSwept",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1669,
+                  "src": "530:19:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1666,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "530:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "529:21:7"
+            },
+            "scope": 1670,
+            "src": "479:72:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1671,
+        "src": "139:415:7"
+      }
+    ],
+    "src": "45:509:7"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IERC31337.sol",
+      "exportedSymbols": {
+        "IERC20": [
+          1632
+        ],
+        "IERC31337": [
+          1670
+        ],
+        "IFloorCalculator": [
+          1683
+        ],
+        "IWrappedERC20": [
+          2626
+        ],
+        "IWrappedERC20Events": [
+          2641
+        ]
+      },
+      "license": "U-U-U-UPPPPP"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.7",
+            ".4"
+          ]
+        },
+        "id": 1634,
+        "name": "PragmaDirective",
+        "src": "45:23:7"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 2627,
+          "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IWrappedERC20.sol",
+          "file": "./IWrappedERC20.sol",
+          "scope": 1671,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 1635,
+        "name": "ImportDirective",
+        "src": "72:29:7"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 1684,
+          "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IFloorCalculator.sol",
+          "file": "./IFloorCalculator.sol",
+          "scope": 1671,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 1636,
+        "name": "ImportDirective",
+        "src": "103:32:7"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "contractDependencies": [
+            1632,
+            2626,
+            2641
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            1670,
+            2626,
+            2641,
+            1632
+          ],
+          "name": "IERC31337",
+          "scope": 1671
+        },
+        "children": [
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "IWrappedERC20",
+                  "referencedDeclaration": 2626,
+                  "type": "contract IWrappedERC20"
+                },
+                "id": 1637,
+                "name": "UserDefinedTypeName",
+                "src": "162:13:7"
+              }
+            ],
+            "id": 1638,
+            "name": "InheritanceSpecifier",
+            "src": "162:13:7"
+          },
+          {
+            "attributes": {
+              "functionSelector": "cd2bc595",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "floorCalculator",
+              "scope": 1670,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1639,
+                "name": "ParameterList",
+                "src": "208:2:7"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 1643,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IFloorCalculator",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "IFloorCalculator",
+                          "referencedDeclaration": 1683,
+                          "type": "contract IFloorCalculator"
+                        },
+                        "id": 1640,
+                        "name": "UserDefinedTypeName",
+                        "src": "234:16:7"
+                      }
+                    ],
+                    "id": 1641,
+                    "name": "VariableDeclaration",
+                    "src": "234:16:7"
+                  }
+                ],
+                "id": 1642,
+                "name": "ParameterList",
+                "src": "233:18:7"
+              }
+            ],
+            "id": 1643,
+            "name": "FunctionDefinition",
+            "src": "184:68:7"
+          },
+          {
+            "attributes": {
+              "functionSelector": "93ee5b61",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "sweepers",
+              "scope": 1670,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_sweeper",
+                      "scope": 1650,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1644,
+                        "name": "ElementaryTypeName",
+                        "src": "276:7:7"
+                      }
+                    ],
+                    "id": 1645,
+                    "name": "VariableDeclaration",
+                    "src": "276:16:7"
+                  }
+                ],
+                "id": 1646,
+                "name": "ParameterList",
+                "src": "275:18:7"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 1650,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 1647,
+                        "name": "ElementaryTypeName",
+                        "src": "317:4:7"
+                      }
+                    ],
+                    "id": 1648,
+                    "name": "VariableDeclaration",
+                    "src": "317:4:7"
+                  }
+                ],
+                "id": 1649,
+                "name": "ParameterList",
+                "src": "316:6:7"
+              }
+            ],
+            "id": 1650,
+            "name": "FunctionDefinition",
+            "src": "258:65:7"
+          },
+          {
+            "attributes": {
+              "functionSelector": "a5b98a5a",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setFloorCalculator",
+              "scope": 1670,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_floorCalculator",
+                      "scope": 1655,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IFloorCalculator",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "IFloorCalculator",
+                          "referencedDeclaration": 1683,
+                          "type": "contract IFloorCalculator"
+                        },
+                        "id": 1651,
+                        "name": "UserDefinedTypeName",
+                        "src": "363:16:7"
+                      }
+                    ],
+                    "id": 1652,
+                    "name": "VariableDeclaration",
+                    "src": "363:33:7"
+                  }
+                ],
+                "id": 1653,
+                "name": "ParameterList",
+                "src": "362:35:7"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1654,
+                "name": "ParameterList",
+                "src": "406:0:7"
+              }
+            ],
+            "id": 1655,
+            "name": "FunctionDefinition",
+            "src": "335:72:7"
+          },
+          {
+            "attributes": {
+              "functionSelector": "485e7ba5",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setSweeper",
+              "scope": 1670,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_sweeper",
+                      "scope": 1662,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1656,
+                        "name": "ElementaryTypeName",
+                        "src": "433:7:7"
+                      }
+                    ],
+                    "id": 1657,
+                    "name": "VariableDeclaration",
+                    "src": "433:16:7"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_allow",
+                      "scope": 1662,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 1658,
+                        "name": "ElementaryTypeName",
+                        "src": "451:4:7"
+                      }
+                    ],
+                    "id": 1659,
+                    "name": "VariableDeclaration",
+                    "src": "451:11:7"
+                  }
+                ],
+                "id": 1660,
+                "name": "ParameterList",
+                "src": "432:31:7"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1661,
+                "name": "ParameterList",
+                "src": "472:0:7"
+              }
+            ],
+            "id": 1662,
+            "name": "FunctionDefinition",
+            "src": "413:60:7"
+          },
+          {
+            "attributes": {
+              "functionSelector": "b12a22a2",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "sweepFloor",
+              "scope": 1670,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_to",
+                      "scope": 1669,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1663,
+                        "name": "ElementaryTypeName",
+                        "src": "499:7:7"
+                      }
+                    ],
+                    "id": 1664,
+                    "name": "VariableDeclaration",
+                    "src": "499:11:7"
+                  }
+                ],
+                "id": 1665,
+                "name": "ParameterList",
+                "src": "498:13:7"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "amountSwept",
+                      "scope": 1669,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 1666,
+                        "name": "ElementaryTypeName",
+                        "src": "530:7:7"
+                      }
+                    ],
+                    "id": 1667,
+                    "name": "VariableDeclaration",
+                    "src": "530:19:7"
+                  }
+                ],
+                "id": 1668,
+                "name": "ParameterList",
+                "src": "529:21:7"
+              }
+            ],
+            "id": 1669,
+            "name": "FunctionDefinition",
+            "src": "479:72:7"
+          }
+        ],
+        "id": 1670,
+        "name": "ContractDefinition",
+        "src": "139:415:7"
+      }
+    ],
+    "id": 1671,
+    "name": "SourceUnit",
+    "src": "45:509:7"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.4+commit.3f05b770.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-01-17T07:36:09.486Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

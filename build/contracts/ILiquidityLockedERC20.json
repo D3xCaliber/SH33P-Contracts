@@ -1,0 +1,348 @@
+{
+  "contractName": "ILiquidityLockedERC20",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IPancakePair",
+          "name": "_liquidityPair",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "_locked",
+          "type": "bool"
+        }
+      ],
+      "name": "setLiquidityLock",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IPancakePair\",\"name\":\"_liquidityPair\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_locked\",\"type\":\"bool\"}],\"name\":\"setLiquidityLock\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/G/projects/degen-protocol/SH33P-contracts/contracts/ILiquidityLockedERC20.sol\":\"ILiquidityLockedERC20\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/G/projects/degen-protocol/SH33P-contracts/contracts/ILiquidityLockedERC20.sol\":{\"keccak256\":\"0x4d568b201e8c8bbeddfa2457a4121d0badcc018db22643c0aca1c77c9d82a919\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://b8ba57a8fa743983527de886cf284991d78284d204422b9a3d89768964d48467\",\"dweb:/ipfs/QmXgdph3QBBep38P5TLZckEQV9mDHpsTxH5EW4qV912obu\"]},\"/G/projects/degen-protocol/SH33P-contracts/contracts/IPancakePair.sol\":{\"keccak256\":\"0x17a73268b07794fd002c3835f9b270f42b03622bd385bc0238f5c77aca6f0196\",\"license\":\"U-U-U-UPPPPP\",\"urls\":[\"bzz-raw://d02f693b07389013f64ece6a682e5f61250fcf7af013198483e1e9f5e08fa20a\",\"dweb:/ipfs/QmazsZaFB2zzCKivtQsnFSE3P3hT8aJjV2ubHSiB43RVPi\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: U-U-U-UPPPPP!!!\r\npragma solidity ^0.7.4;\r\n\r\nimport \"./IPancakePair.sol\";\r\n\r\ninterface ILiquidityLockedERC20\r\n{\r\n    function setLiquidityLock(IPancakePair _liquidityPair, bool _locked) external;\r\n}",
+  "sourcePath": "G:/projects/degen-protocol/SH33P-contracts/contracts/ILiquidityLockedERC20.sol",
+  "ast": {
+    "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/ILiquidityLockedERC20.sol",
+    "exportedSymbols": {
+      "ILiquidityLockedERC20": [
+        1802
+      ],
+      "IPancakePair": [
+        2170
+      ]
+    },
+    "id": 1803,
+    "license": "U-U-U-UPPPPP",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1793,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:23:11"
+      },
+      {
+        "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IPancakePair.sol",
+        "file": "./IPancakePair.sol",
+        "id": 1794,
+        "nodeType": "ImportDirective",
+        "scope": 1803,
+        "sourceUnit": 2171,
+        "src": "72:28:11",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 1802,
+        "linearizedBaseContracts": [
+          1802
+        ],
+        "name": "ILiquidityLockedERC20",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "449113f2",
+            "id": 1801,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setLiquidityLock",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1799,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1796,
+                  "mutability": "mutable",
+                  "name": "_liquidityPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1801,
+                  "src": "170:27:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IPancakePair_$2170",
+                    "typeString": "contract IPancakePair"
+                  },
+                  "typeName": {
+                    "id": 1795,
+                    "name": "IPancakePair",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 2170,
+                    "src": "170:12:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IPancakePair_$2170",
+                      "typeString": "contract IPancakePair"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1798,
+                  "mutability": "mutable",
+                  "name": "_locked",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1801,
+                  "src": "199:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1797,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "199:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "169:43:11"
+            },
+            "returnParameters": {
+              "id": 1800,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "221:0:11"
+            },
+            "scope": 1802,
+            "src": "144:78:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1803,
+        "src": "104:121:11"
+      }
+    ],
+    "src": "45:180:11"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/ILiquidityLockedERC20.sol",
+      "exportedSymbols": {
+        "ILiquidityLockedERC20": [
+          1802
+        ],
+        "IPancakePair": [
+          2170
+        ]
+      },
+      "license": "U-U-U-UPPPPP"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.7",
+            ".4"
+          ]
+        },
+        "id": 1793,
+        "name": "PragmaDirective",
+        "src": "45:23:11"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 2171,
+          "absolutePath": "/G/projects/degen-protocol/SH33P-contracts/contracts/IPancakePair.sol",
+          "file": "./IPancakePair.sol",
+          "scope": 1803,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 1794,
+        "name": "ImportDirective",
+        "src": "72:28:11"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            1802
+          ],
+          "name": "ILiquidityLockedERC20",
+          "scope": 1803
+        },
+        "children": [
+          {
+            "attributes": {
+              "functionSelector": "449113f2",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setLiquidityLock",
+              "scope": 1802,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_liquidityPair",
+                      "scope": 1801,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IPancakePair",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "IPancakePair",
+                          "referencedDeclaration": 2170,
+                          "type": "contract IPancakePair"
+                        },
+                        "id": 1795,
+                        "name": "UserDefinedTypeName",
+                        "src": "170:12:11"
+                      }
+                    ],
+                    "id": 1796,
+                    "name": "VariableDeclaration",
+                    "src": "170:27:11"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_locked",
+                      "scope": 1801,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 1797,
+                        "name": "ElementaryTypeName",
+                        "src": "199:4:11"
+                      }
+                    ],
+                    "id": 1798,
+                    "name": "VariableDeclaration",
+                    "src": "199:12:11"
+                  }
+                ],
+                "id": 1799,
+                "name": "ParameterList",
+                "src": "169:43:11"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1800,
+                "name": "ParameterList",
+                "src": "221:0:11"
+              }
+            ],
+            "id": 1801,
+            "name": "FunctionDefinition",
+            "src": "144:78:11"
+          }
+        ],
+        "id": 1802,
+        "name": "ContractDefinition",
+        "src": "104:121:11"
+      }
+    ],
+    "id": 1803,
+    "name": "SourceUnit",
+    "src": "45:180:11"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.4+commit.3f05b770.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-01-17T07:36:09.498Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
