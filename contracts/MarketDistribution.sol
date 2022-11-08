@@ -24,7 +24,7 @@ contract MarketDistribution is TokensRecoverable, IMarketDistribution {
     
     RootedToken public rootedToken;
     IERC31337 public eliteToken; //wrapped rooted token
-    IERC20 public baseToken;`
+    IERC20 public baseToken; //WBNB
 
     IPancakePair public rootedEliteLP;
     IPancakePair public rootedBaseLP;
