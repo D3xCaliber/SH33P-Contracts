@@ -66,7 +66,8 @@ abstract contract LiquidityLockedERC20 is GatedERC20, ILiquidityLockedERC20
             blockNumber: uint32(block.number),
             transferFrom: _transferFrom
         });
-        require (last.origin != allow.origin || last.blockNumber != allow.blockNumber || last.transferFrom != allow.transferFrom, "Liquidity is locked (Please try again next block)");
+        require (last.origin != allow.origin || last.blockNumber != allow.blockNumber || last.transferFrom != allow.transferFrom, 
+            "Liquidity is locked (Please try again next block)");
         balanceAllowed = allow;
     }
 

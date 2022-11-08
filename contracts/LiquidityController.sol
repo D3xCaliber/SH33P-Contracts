@@ -22,6 +22,7 @@ contract LiquidityController is TokensRecoverable, ILiquidityController
     IERC31337 immutable elite;
     IERC20 immutable rootedEliteLP;
     IERC20 immutable rootedBaseLP;
+
     IFloorCalculator public calculator;
     RootedTransferGate public gate;
     mapping(address => bool) public liquidityControllers;
@@ -40,12 +41,16 @@ contract LiquidityController is TokensRecoverable, ILiquidityController
         
         _base.approve(address(_elite), uint256(-1));
         _base.approve(address(_pancakeRouter), uint256(-1));
+
         _rooted.approve(address(_pancakeRouter), uint256(-1));
         IERC20 _rootedBaseLP = IERC20(_pancakeFactory.getPair(address(_base), address(_rooted)));
+
         _rootedBaseLP.approve(address(_pancakeRouter), uint256(-1));
         rootedBaseLP = _rootedBaseLP;
+
         _elite.approve(address(_pancakeRouter), uint256(-1));
         IERC20 _rootedEliteLP = IERC20(_pancakeFactory.getPair(address(_elite), address(_rooted)));
+
         _rootedEliteLP.approve(address(_pancakeRouter), uint256(-1));
         rootedEliteLP = _rootedEliteLP;
     }
@@ -55,8 +60,7 @@ contract LiquidityController is TokensRecoverable, ILiquidityController
         require(liquidityControllers[msg.sender], "Not a Liquidity Controller");
         _;
     }
-
-    // Owner function to enable other contracts or addresses to use the Liquidity Controller
+// Owner function to enable other contracts or addresses to use the Liquidity Controller
     function setLiquidityController(address controlAddress, bool controller) public ownerOnly()
     {
         liquidityControllers[controlAddress] = controller;
@@ -68,17 +72,18 @@ contract LiquidityController is TokensRecoverable, ILiquidityController
         gate = _gate;
     }
 
-    // Removes liquidity, buys from either pool, sets a temporary dump tax
+// Removes liquidity, buys from either pool, sets a temporary dump tax
     function removeBuyAndTax(uint256 amount, address token, uint16 tax, uint256 time) public override liquidityControllerOnly()
     {
         gate.setUnrestricted(true);
         amount = removeLiq(token, amount);
         buyRootedToken(token, amount);
-        gate.setDumpTax(tax, time);
+        gate.setDumpTax(tax, time); //in seconds
         gate.setUnrestricted(false);
     }
 
-    // Use Base tokens held by this contract to buy from the Base Pool and sell in the Elite Pool
+// Use Base tokens held by this contract to 
+// buy from the Base Pool and sell in the Elite Pool
     function balancePriceBase(uint256 amount) public override liquidityControllerOnly()
     {
         amount = buyRootedToken(address(base), amount);
@@ -86,7 +91,9 @@ contract LiquidityController is TokensRecoverable, ILiquidityController
         elite.withdrawTokens(amount);
     }
 
-    // Use Base tokens held by this contract to buy from the Elite Pool and sell in the Base Pool
+// Use Base tokens held by this contract to 
+// buy from the Elite Pool and 
+// sell in the Base Pool
     function balancePriceElite(uint256 amount) public override liquidityControllerOnly()
     {        
         elite.depositTokens(amount);
@@ -94,20 +101,20 @@ contract LiquidityController is TokensRecoverable, ILiquidityController
         amount = sellRootedToken(address(base), amount);
     }
 
-    // Uses value in the controller to buy
+// Uses value in the controller to buy
     function buyAndTax(address token, uint256 amountToSpend, uint16 tax, uint256 time) public override liquidityControllerOnly()
     {
         buyRootedToken(token, amountToSpend);
         gate.setDumpTax(tax, time);
     }
 
-    // Sweeps the Base token under the floor to this address
+// Sweeps the Base token under the floor to this address
     function sweepFloor() public override liquidityControllerOnly()
     {
         elite.sweepFloor(address(this));
     }
 
-    // Move liquidity from Elite pool --->> Base pool
+// Move liquidity from Elite pool --->> Base pool
     function zapEliteToBase(uint256 liquidity) public override liquidityControllerOnly() 
     {       
         gate.setUnrestricted(true);
@@ -117,7 +124,7 @@ contract LiquidityController is TokensRecoverable, ILiquidityController
         gate.setUnrestricted(false);
     }
 
-    // Move liquidity from Base pool --->> Elite pool
+// Move liquidity from Base pool --->> Elite pool
     function zapBaseToElite(uint256 liquidity) public override liquidityControllerOnly() 
     {
         gate.setUnrestricted(true);
@@ -131,7 +138,6 @@ contract LiquidityController is TokensRecoverable, ILiquidityController
     {
         elite.depositTokens(baseAmount);
     }
-
     function unwrapElite(uint256 eliteAmount) public override liquidityControllerOnly() 
     {
         elite.withdrawTokens(eliteAmount);
@@ -163,12 +169,19 @@ contract LiquidityController is TokensRecoverable, ILiquidityController
 
     function addLiq(address eliteOrBase, uint256 baseAmount) internal 
     {
-        pancakeRouter.addLiquidity(address(eliteOrBase), address(rooted), baseAmount, rooted.balanceOf(address(this)), 0, 0, address(this), block.timestamp);
+        pancakeRouter.addLiquidity(
+            address(eliteOrBase), 
+        address(rooted), baseAmount, 
+        rooted.balanceOf(address(this)), 0, 0, address(this), block.timestamp);
+
     }
 
     function removeLiq(address eliteOrBase, uint256 tokens) internal returns (uint256)
     {
-        (tokens, ) = pancakeRouter.removeLiquidity(address(eliteOrBase), address(rooted), tokens, 0, 0, address(this), block.timestamp);
+        (tokens, ) = pancakeRouter.removeLiquidity(address(eliteOrBase), 
+        address(rooted), 
+        tokens, 0, 0, 
+        address(this), block.timestamp);
         return tokens;
     }
 

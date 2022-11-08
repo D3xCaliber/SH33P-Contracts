@@ -21,9 +21,10 @@ contract MarketDistribution is TokensRecoverable, IMarketDistribution {
     IMarketGeneration public marketGeneration;
     IPancakeRouter02 pancakeRouter;
     IPancakeFactory pancakeFactory;
+    
     RootedToken public rootedToken;
-    IERC31337 public eliteToken;
-    IERC20 public baseToken;
+    IERC31337 public eliteToken; //wrapped rooted token
+    IERC20 public baseToken;`
 
     IPancakePair public rootedEliteLP;
     IPancakePair public rootedBaseLP;
@@ -35,7 +36,7 @@ contract MarketDistribution is TokensRecoverable, IMarketDistribution {
 
     bool public override distributionComplete;
 
-    uint256 public immutable totalRooted = 1e24; // 1 Million, or dynamically set
+uint256 public immutable totalRooted = 1e24 ** 21; // 21 Million, or dynamically set
 
     uint256 public totalBaseTokenCollected;
     uint256 public totalBoughtForContributors;
@@ -117,7 +118,8 @@ contract MarketDistribution is TokensRecoverable, IMarketDistribution {
         rootedEliteLP.approve(address(pancakeRouter), uint256(-1));
     }
 
-    // baseToken = WBNB
+// baseToken = WBNB
+
     function distribute() public override {
         require (msg.sender == address(marketGeneration), "Unauthorized");
         require (!distributionComplete, "Distribution complete");
@@ -146,7 +148,7 @@ contract MarketDistribution is TokensRecoverable, IMarketDistribution {
         preBuyForContributors();
         sellTheTop();
 
-        // WBNB
+// WBNB
         uint256 totalBase = totalBaseTokenCollected * projectSetupPercent / 10000;
 
         baseToken.transfer(oneshotController, totalBase);

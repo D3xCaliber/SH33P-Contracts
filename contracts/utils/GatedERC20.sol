@@ -44,9 +44,11 @@ abstract contract GatedERC20 is ERC20, TokensRecoverable, IGatedERC20
         }
         ITransferGate _transferGate = transferGate;
         uint256 remaining = amount;
+
         if (address(_transferGate) != address(0)) 
         {
             address splitter = _transferGate.feeSplitter();
+            
             uint256 fees = _transferGate.handleTransfer(msg.sender, sender, recipient, amount);
             if (fees > 0)
             {

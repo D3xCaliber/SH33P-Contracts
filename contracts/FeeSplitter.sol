@@ -14,13 +14,15 @@ contract FeeSplitter is TokensRecoverable {
     using SafeERC20 for IERC20;
     using Address for address;
     
-    uint256 devRateMin = 1000;  
+    uint256 devRateMin = 1000;  // is set to 10%
     uint256 rootRateMin = 1000;
 
     address public devAddress;
     address public deployerAddress;
 
-    address public burnAddress;
+// TODO 
+address public burnAddress; 
+// TODO convert the burn mechanic into forming additional PoL or nodes..
 
     mapping (IGatedERC20 => address[]) public feeCollectors;
     mapping (IGatedERC20 => uint256[]) public feeRates;
@@ -29,7 +31,7 @@ contract FeeSplitter is TokensRecoverable {
     constructor(address _devAddress, address _burnAddress) {
         deployerAddress = msg.sender;
         devAddress = _devAddress;
-        burnAddress = _burnAddress;
+        burnAddress = _burnAddress; // TODO
     }
 
     function setDevAddress(address _devAddress) public {
@@ -37,22 +39,26 @@ contract FeeSplitter is TokensRecoverable {
         devAddress = _devAddress;
     }
 
-    function setBurnAddress(address _address) public {
+//TODO convert
+function setBurnAddress(address _address) public {
         require (msg.sender == deployerAddress || msg.sender == devAddress, "Not a deployer or dev address");
-        burnAddress = _address;
-    }
+burnAddress = _address;}
+// should really be called afterBurner
 
-    function setFees(IGatedERC20 token, uint256 burnRate, address[] memory collectors, uint256[] memory rates) public ownerOnly() {
+    function setFees(IGatedERC20 token, 
+        uint256 burnRate, 
+        address[] memory collectors, 
+        uint256[] memory rates) 
+        public ownerOnly() {
         //require (collectors.length == rates.length && collectors.length > 1, "Fee Collectors and Rates must be the same size and contain at least 2 elements");
         require (collectors[0] == devAddress, "First address must be dev address");
         //require (rates[0] >= devRateMin && rates[1] >= rootRateMin, "First rate must be greater or equal to devRateMin and second rate must be greater or equal to rootRateMin");
         
-        uint256 totalRate = burnRate;
+uint256 totalRate = burnRate;
         for (uint256 i = 0; i < rates.length; i++) {
             totalRate = totalRate + rates[i];
         }
-
-        require (totalRate == 10000, "Total fee rate must be 100%");
+            require (totalRate == 10000, "Total fee rate must be 100%");
         
         if (token.balanceOf(address(this)) > 0) {
             payFees(token);
@@ -60,7 +66,7 @@ contract FeeSplitter is TokensRecoverable {
 
         feeCollectors[token] = collectors;
         feeRates[token] = rates;
-        burnRates[token] = burnRate;
+burnRates[token] = burnRate;
     }
 
     function payFees(IGatedERC20 token) public {

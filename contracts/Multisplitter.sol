@@ -70,7 +70,7 @@ contract Multisplitter is Whitelist {
 
     function distribute() public onlyWhitelisted() returns (bool _success) {
         uint256 tokens = address(this).balance;
-
+// base refers to Rooted token, i think
         _user[1].baseBalance += tokens.mul(2000).div(10000);
         _user[2].baseBalance += tokens.mul(2000).div(10000);
         _user[3].baseBalance += tokens.mul(2000).div(10000);
@@ -84,7 +84,7 @@ contract Multisplitter is Whitelist {
     function distributeTokens(address _token) public onlyWhitelisted() returns (bool _success) {
         token = IERC20(_token);
         uint256 tokens = token.balanceOf(address(this));
-
+// other token that is paired.
         _user[1].tokenBalance += tokens.mul(2000).div(10000);
         _user[2].tokenBalance += tokens.mul(2000).div(10000);
         _user[3].tokenBalance += tokens.mul(2000).div(10000);
