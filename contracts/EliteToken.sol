@@ -7,14 +7,14 @@ import "./IERC20.sol";
 contract eliteToken is ERC31337 {
     using Address for address;
     using SafeMath for uint256;
-    
+
     mapping (address => bool) public freeParticipantControllers;
-    mapping (address => bool) public freeParticipants; 
+    mapping (address => bool) public freeParticipants;
     mapping (address => bool) public burnRateControllers;
     uint16 burnRate;
 
-    constructor (IERC20 _wrappedToken) ERC31337(_wrappedToken, "X3-matic", "X3MATIC") {
-        
+    constructor (IERC20 _wrappedToken) ERC31337(_wrappedToken, "MatixX", "MATIX") {
+
     }
 
     function setFreeParticipantController(address freeParticipantController, bool allow) public ownerOnly() {
@@ -34,7 +34,7 @@ contract eliteToken is ERC31337 {
     function setBurnRate(uint16 _burnRate) public {
         require (msg.sender == owner || burnRateControllers[msg.sender], "Not an owner or burn rate controller");
         require (_burnRate <= 10000, "But rate must be less or equal to 100%");
-// TODO convert to afterBurner   
+// TODO convert to afterBurner
         burnRate = _burnRate;
     }
 
@@ -50,10 +50,10 @@ contract eliteToken is ERC31337 {
             amount = remaining = remaining.sub(burn, "Burn too much");
             _burn(sender, burn);
         }
-        
+
         _balanceOf[sender] = _balanceOf[sender].sub(amount, "EliteToken: transfer amount exceeds balance");
         _balanceOf[recipient] = _balanceOf[recipient].add(remaining);
-        
+
         emit Transfer(sender, recipient, remaining);
     }
 }
