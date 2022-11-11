@@ -21,7 +21,7 @@ All in one shot
 Ready for staking
 Cheaper than buying first!
 */
-
+//Could probably do some part of the presale like this
 contract DarkXLiquidityMatching is TokensRecoverable
 {
     using SafeMath for uint256;
@@ -40,7 +40,7 @@ contract DarkXLiquidityMatching is TokensRecoverable
         uniswapV2Router = _uniswapV2Router;
         liquidityTokenWrapper = _liquidityTokenWrapper;
         matiX = _matiX;
-        
+
         IWETH _weth = IWETH(_uniswapV2Router.WETH());
         weth = _weth;
 

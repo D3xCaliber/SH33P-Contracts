@@ -13,6 +13,7 @@ import "./IERC20.sol";
 
 import "./Whitelist.sol";
 
+//todo drip into vaults #afterBurner
 
 contract BurnPit is Whitelist {
     using Address for address;
