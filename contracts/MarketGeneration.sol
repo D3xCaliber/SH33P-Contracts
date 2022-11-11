@@ -95,8 +95,8 @@ contract MarketGeneration is TokensRecoverable, IMarketGeneration {
 
         isActive = false;
         if (address(this).balance == 0) { return; }
-        
-        IWBNB(address(baseToken)).deposit{ value: address(this).balance }();
+// SHOULD BE IWETH        
+IWETH(address(baseToken)).deposit{ value: address(this).balance }();
         baseToken.safeApprove(address(marketDistribution), uint256(-1));
 
         marketDistribution.distribute();

@@ -4,7 +4,7 @@ pragma solidity ^0.7.4;
 import "./ERC31337.sol";
 import "./IERC20.sol";
 
-contract EliteToken is ERC31337 {
+contract eliteToken is ERC31337 {
     using Address for address;
     using SafeMath for uint256;
     
@@ -13,7 +13,7 @@ contract EliteToken is ERC31337 {
     mapping (address => bool) public burnRateControllers;
     uint16 burnRate;
 
-    constructor (IERC20 _wrappedToken) ERC31337(_wrappedToken, "eliteSH33P2", "eSH33P2") {
+    constructor (IERC20 _wrappedToken) ERC31337(_wrappedToken, "X3-matic", "X3MATIC") {
         
     }
 
@@ -34,7 +34,7 @@ contract EliteToken is ERC31337 {
     function setBurnRate(uint16 _burnRate) public {
         require (msg.sender == owner || burnRateControllers[msg.sender], "Not an owner or burn rate controller");
         require (_burnRate <= 10000, "But rate must be less or equal to 100%");
-       
+// TODO convert to afterBurner   
         burnRate = _burnRate;
     }
 

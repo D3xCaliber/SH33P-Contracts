@@ -14,7 +14,8 @@ import "./IPancakeFactory.sol";
 import "./IPancakePair.sol";
 import "./SafeERC20.sol";
 
-contract MarketDistribution is TokensRecoverable, IMarketDistribution {
+contract MarketDistribution is TokensRecoverable, IMarketDistribution 
+{
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
@@ -23,8 +24,8 @@ contract MarketDistribution is TokensRecoverable, IMarketDistribution {
     IPancakeFactory pancakeFactory;
     
     RootedToken public rootedToken;
-    IERC31337 public eliteToken; //wrapped rooted token
-    IERC20 public baseToken; //WBNB
+    IERC31337 public eliteToken; // wrapped rooted token
+    IERC20 public baseToken; // WBNB// IWBNB || SHOULD BE NETWORK'S NATIVE TOKEN
 
     IPancakePair public rootedEliteLP;
     IPancakePair public rootedBaseLP;
@@ -36,7 +37,7 @@ contract MarketDistribution is TokensRecoverable, IMarketDistribution {
 
     bool public override distributionComplete;
 
-uint256 public immutable totalRooted = 1e24 ** 21; // 21 Million, or dynamically set
+uint256 public immutable totalRooted = 1e24 * 21; // 21 Million, or dynamically set
 
     uint256 public totalBaseTokenCollected;
     uint256 public totalBoughtForContributors;
@@ -79,7 +80,7 @@ uint256 public immutable totalRooted = 1e24 ** 21; // 21 Million, or dynamically
         rootedToken = _rootedToken;
         eliteToken = _eliteToken;
         burnPit = _burnPit;
-        baseToken = _eliteToken.wrappedToken();
+baseToken = _eliteToken.wrappedToken();
         liquidityController = _liquidityController;
         pancakeRouter = _pancakeRouter;
         pancakeFactory = IPancakeFactory(_pancakeRouter.factory());

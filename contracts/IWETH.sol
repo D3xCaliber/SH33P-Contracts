@@ -1,7 +1,7 @@
-// SPDX-License-Identifier: J-J-J-JENGA!!!
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.7.4;
 
-interface IWBNB
+interface IWETH
 {    
     function deposit() external payable;
 }

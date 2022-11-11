@@ -12,7 +12,7 @@ An upToken is a token that gains in value against whatever token it is paired wi
 
 import "./LiquidityLockedERC20.sol";
 
-contract RootedToken is LiquidityLockedERC20("Degen Protocol", "SH33P") {
+contract RootedToken is LiquidityLockedERC20("X3defi", "DarkX") {
     address public minter;
 
     constructor() {

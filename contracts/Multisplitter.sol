@@ -70,7 +70,7 @@ contract Multisplitter is Whitelist {
 
     function distribute() public onlyWhitelisted() returns (bool _success) {
         uint256 tokens = address(this).balance;
-// base refers to Rooted token, i think
+// base refers to WBNB/WETH or native gas token.
         _user[1].baseBalance += tokens.mul(2000).div(10000);
         _user[2].baseBalance += tokens.mul(2000).div(10000);
         _user[3].baseBalance += tokens.mul(2000).div(10000);
