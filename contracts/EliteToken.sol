@@ -13,7 +13,7 @@ contract eliteToken is ERC31337 {
     mapping (address => bool) public burnRateControllers;
     uint16 burnRate;
 
-    constructor (IERC20 _wrappedToken) ERC31337(_wrappedToken, "MatixX", "MATIX") {
+    constructor (IERC20 _wrappedToken) ERC31337(_wrappedToken, "MatiX", "MATIX") {
 
     }
 
