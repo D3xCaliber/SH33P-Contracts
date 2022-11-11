@@ -54,6 +54,7 @@ contract RootedTransferGate is TokensRecoverable, ITransferGate
 
     constructor(ILiquidityLockedERC20 _rootedToken, IPancakeRouter02 _pancakeRouter)
     {
+    
         rootedToken = _rootedToken;
         pancakeRouter = _pancakeRouter;
         pancakeFactory = IPancakeFactory(_pancakeRouter.factory());

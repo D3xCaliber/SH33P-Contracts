@@ -27,7 +27,7 @@ contract VaultBooster is Whitelist {
     // Basic token handling for both SH33P and xSH33P
     IERC20 public  SH33P;
     IERC20 public xSH33P;
-    
+
     // Vault Interface, to boost that APY
     IVault public  vault;
 
@@ -43,7 +43,7 @@ contract VaultBooster is Whitelist {
 
     uint256 public totalTokensStaked;
     uint256 public totalRewardsDistributed;
-    
+
     /////////////////////
     // CONTRACT EVENTS //
     /////////////////////
@@ -96,7 +96,7 @@ contract VaultBooster is Whitelist {
 
         SH33P.approve(_xSH33P, MAX_UINT);
         SH33PToken.stake(_amount);
-        
+
         emit onStakeRootToken(msg.sender, _xSH33P, _amount, block.timestamp);
         return true;
     }
@@ -107,10 +107,10 @@ contract VaultBooster is Whitelist {
         uint256 _amount = tokenBalance(address(xSH33P));
 
         totalRewardsDistributed += _amount;
-        
+
         xSH33P.approve(_vault, MAX_UINT);
         vault.donate(_amount);
-        
+
         emit onDepositToDripPool(_amount, block.timestamp);
         return true;
     }

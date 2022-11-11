@@ -14,8 +14,9 @@ import "./IPancakeFactory.sol";
 import "./IPancakePair.sol";
 import "./SafeERC20.sol";
 
-contract MarketDistribution is TokensRecoverable, IMarketDistribution 
-{
+contract MarketDistribution is TokensRecoverable, IMarketDistribution {
+
+    
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 

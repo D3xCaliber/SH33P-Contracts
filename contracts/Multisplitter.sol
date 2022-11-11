@@ -8,6 +8,8 @@ import "./IERC20.sol";
 import "./Whitelist.sol";
 
 contract Multisplitter is Whitelist {
+
+
     using Address for address;
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
@@ -33,13 +35,16 @@ contract Multisplitter is Whitelist {
     event onPushPayment(address indexed _recipient, uint256 _amount, uint256 _timestamp);
     event onDistribute(address indexed _caller, uint256 _amount, uint256 _timestamp);
 
-    constructor(
+    constructor( 
         address payable _user1, 
         address payable _user2, 
         address payable _user3, 
         address payable _user4, 
-        address payable _user5
-    ) {
+        address payable _user5;
+    ) 
+    
+    {
+    
         _user[1].wallet = _user1; // Sheep
         _user[2].wallet = _user2; // Shane
         _user[3].wallet = _user3; // Rhino

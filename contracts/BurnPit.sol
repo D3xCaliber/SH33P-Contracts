@@ -1,7 +1,7 @@
-// SPDX-License-Identifier: U-U-U-UPPPPP!!!
+ // SPDX-License-Identifier: U-U-U-UPPPPP!!!
 pragma solidity ^0.7.4;
 
-// The burn pit is a step above a simple burn address 
+// The burn pit is a step above a simple burn address
 // It will serve the community by collecting a redistributing fees
 // Oscillating between 50-51%
 
@@ -18,7 +18,7 @@ contract BurnPit is Whitelist {
     using Address for address;
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
-    
+
     IERC20 public token;
 
     uint256 internal _divisor;
@@ -66,7 +66,7 @@ contract BurnPit is Whitelist {
 
     function limits() public view returns (uint256, uint256) {
         return (
-            (token.totalSupply().mul(_upperboundPercentage).div(_divisor)), 
+            (token.totalSupply().mul(_upperboundPercentage).div(_divisor)),
             (token.totalSupply().mul(_lowerboundPercentage).div(_divisor))
         );
     }

@@ -6,7 +6,7 @@ import "./IERC20.sol";
 import "./ERC20.sol";
 import "./TokensRecoverable.sol";
 
-contract StakingToken is ERC20("DarkX Steak", "Dark0X"), TokensRecoverable {
+contract StakingToken is ERC20("DarkX Steak", "DARK0x"), TokensRecoverable {
     using SafeMath for uint256;
 
     IERC20 public immutable rooted;
@@ -31,7 +31,7 @@ contract StakingToken is ERC20("DarkX Steak", "Dark0X"), TokensRecoverable {
 
     function statsOf(address _user) public view returns (uint256 _totalStaked, uint256 _totalUnstaked) {
         return (
-            addressRecord[_user].totalStaked, 
+            addressRecord[_user].totalStaked,
             addressRecord[_user].totalUnstaked
         );
     }
@@ -91,6 +91,6 @@ contract StakingToken is ERC20("DarkX Steak", "Dark0X"), TokensRecoverable {
     }
 
     function canRecoverTokens(IERC20 token) internal override view returns (bool) {
-        return address(token) != address(this) && address(token) != address(rooted); 
+        return address(token) != address(this) && address(token) != address(rooted);
     }
 }

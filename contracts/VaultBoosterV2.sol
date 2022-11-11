@@ -69,14 +69,14 @@ contract VaultBoosterV2 is Whitelist {
 
     // Distribute funds
     function withdraw(address _token, address payable _recipient) external onlyWhitelisted() returns (bool _success) {
-        
+
         // Get the payout values to transfer
         uint256 _base = baseBalance();
         uint256 _tokens = tokenBalance(_token);
 
         // Send the tokens to the Party Lord
         IERC20(_token).transfer(_recipient, _tokens);
-
+        
         // Transfer any base to the Party Lord
         _recipient.transfer(_base);
 

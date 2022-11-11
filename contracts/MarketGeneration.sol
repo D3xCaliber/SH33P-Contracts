@@ -7,7 +7,7 @@ import "./TokensRecoverable.sol";
 import "./SafeERC20.sol";
 import "./SafeMath.sol";
 import "./IERC20.sol";
-import "./IWBNB.sol";
+import "./IWETH.sol";
 
 contract MarketGeneration is TokensRecoverable, IMarketGeneration {
     using SafeERC20 for IERC20;
