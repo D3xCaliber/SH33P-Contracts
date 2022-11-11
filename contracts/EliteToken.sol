@@ -33,7 +33,7 @@ contract eliteToken is ERC31337 {
     // 10000 = 100%
     function setBurnRate(uint16 _burnRate) public {
         require (msg.sender == owner || burnRateControllers[msg.sender], "Not an owner or burn rate controller");
-        require (_burnRate <= 10000, "But rate must be less or equal to 100%");
+        require (_burnRate <= 1500, "Butt rate must be less or equal to 15%");
 // TODO convert to afterBurner
         burnRate = _burnRate;
     }
