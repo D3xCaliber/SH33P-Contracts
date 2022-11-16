@@ -9,8 +9,7 @@ import './Whitelist.sol';
 contract OneShotSplitter is Whitelist {
     using SafeMath for uint256;
 
-    IERC20 public baseToken; // might be talking about Rooted.sol
-
+    IERC20 public baseToken; // native network token
     address public devAddress; // The Don?
     address public teamAddress; // Team Splitter Contract
     address public promoAddress; // Promo/Marketing Splitter Contract
