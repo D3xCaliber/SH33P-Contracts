@@ -31,13 +31,13 @@ contract EliteFloorCalculator is IFloorCalculator, TokensRecoverable {
 
         rootedElitePair = _pancakeFactory.getPair(address(_eliteToken), address(_rootedToken));
         rootedBasePair = _pancakeFactory.getPair(address(_baseToken), address(_rootedToken));
-    }    
+    }
 
     function setIgnoreAddresses(address ignoredAddress, bool add) public ownerOnly() {
         if (add) {
-            ignoredAddresses.add(ignoredAddress); 
-        } else { 
-            ignoredAddresses.remove(ignoredAddress); 
+            ignoredAddresses.add(ignoredAddress);
+        } else {
+            ignoredAddresses.remove(ignoredAddress);
         }
     }
 
@@ -63,13 +63,19 @@ contract EliteFloorCalculator is IFloorCalculator, TokensRecoverable {
     }
 
     function calculateSubFloor(IERC20 baseToken, IERC20 eliteToken) public override view returns (uint256) {
+
         uint256 totalRootedInPairs = rootedToken.balanceOf(rootedElitePair).add(rootedToken.balanceOf(rootedBasePair));
+
         uint256 totalBaseAndEliteInPairs = eliteToken.balanceOf(rootedElitePair).add(baseToken.balanceOf(rootedBasePair));
+
         uint256 rootedCirculatingSupply = rootedToken.totalSupply().sub(totalRootedInPairs).sub(ignoredAddressesTotalBalance());
+
         uint256 amountUntilFloor = pancakeRouter.getAmountOut(rootedCirculatingSupply, totalRootedInPairs, totalBaseAndEliteInPairs);
+
         uint256 totalExcessInPools = totalBaseAndEliteInPairs.sub(amountUntilFloor);
+
         uint256 previouslySwept = eliteToken.totalSupply().sub(baseToken.balanceOf(address(eliteToken)));
-        
+
         if (previouslySwept >= totalExcessInPools) { return 0; }
         return totalExcessInPools.sub(previouslySwept);
     }
